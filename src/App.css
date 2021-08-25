@@ -1,0 +1,164 @@
+
+html{
+  background-color: #202227;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-title {
+  text-align: left;
+  padding-left: 80px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 15vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  box-shadow: 0px 0px 20px #0d0d0d;
+  border-bottom: 3px solid #1590b6;
+
+  margin-bottom: 50px;
+
+}
+
+.Categorie-list {
+  text-align: center;
+  list-style: none;
+  display: inline;
+  padding: 20px;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: -30px;
+  float: right;
+}
+
+.Categorie-list button{
+  font-size: 30px;
+  border: none; 
+  background-color: rgba(0, 0, 0, 0);
+  color: #ffff
+}
+
+.Categorie-list button:hover{ 
+  font-size: 30px;
+  border: none; 
+  background-color: rgba(0, 0, 0, 0);
+  color: #1590b6;
+  text-decoration: underline;
+}
+
+.Movie-title {
+  color:#d0d0d0;
+  text-align: center;
+  font-size: 20px;
+}
+
+.Movie-list {
+  text-decoration: none;
+  display: inline;
+  float: left;
+  width: 300px;
+  margin-left: 50px;
+}
+
+.Movie-image{
+  border-radius: 10px;
+  box-shadow: 0px 0px 20px #0d0d0d;
+  background-color: #d0d0d0;
+  width: 80%;
+
+  opacity: 100%;
+}
+
+.Movie-image:hover{
+  opacity: 15%;
+}
+
+.Movie-background {
+  width: 300px;
+  height: 400px;
+}
+
+.Movie-rating {
+  color: #edd945;
+  font-style: bold;
+  margin-top: -18px;
+  margin-right: -20px;
+}
+
+.Star-icon {
+  width: 20%;
+  margin-left: -47px;
+  margin-top: 3px;
+}
+
+.Description-window {
+  color: #d0d0d0;
+  width: 220px;
+  height: 375px;
+  text-align: center;
+  margin-left: 44px;
+  margin-top: -480px;
+}
+
+.Description-window h1{
+  color: #ffff;
+}
+
+.App-body{
+  background-color: #282c34;
+}
+
+.video {
+  width: 980px;
+  margin: auto;
+  padding: 10px;
+
+}
+
+.video-title {
+  color: #d0d0d0;
+}
+
+.Title {
+  
+  margin-bottom: -55px;
+
+}
+
+.rating-background {
+
+  width: 80px;
+  height: 25px;
+
+  margin-top: -70px;
+  margin-right: 40px;
+  float: right;
+
+  position: relative;
+  background-color: #1590b6;
+
+  border-radius: 5px;
+
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
