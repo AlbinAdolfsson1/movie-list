@@ -12,7 +12,6 @@ const App = () => {
   const [popular, setPopular] = useState(false)
   const [topMovies, setTopmovies] = useState(false)
   const [upcomingMovies, setUpcomingMovies] = useState(true)
-  const [similarMovies, setSimilarMovies] = useState([])
   let [video, setVideo] = useState(false)
   let [currentList, setList] = useState([])
   let [currentVideo, setCurrentVideo] = useState('')
