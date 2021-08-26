@@ -4,10 +4,6 @@ import axios from 'axios';
 import './App.css';
 import ReactPlayer from 'react-player';
 
-let currentTitle = `The Movie List`;
-
-const title = <h1 className="App-title">{currentTitle}</h1>;
-
 const App = () => {
   const [popular, setPopular] = useState(false)
   const [topMovies, setTopmovies] = useState(false)
@@ -17,6 +13,16 @@ const App = () => {
   let [currentVideo, setCurrentVideo] = useState('')
   let [currentVideoTitle, setCurrentVideoTitle] = useState('')
   let [currentMovieID, setCurrentMovieID] = useState()
+  let [currentDetail, setCurrentDetail] = useState([])
+
+  let [currrentTitle, setCurrentTitle] = useState('')
+  let [currrentDescription, setCurrentDescription] = useState('')
+  let [currrentRating, setCurrentRating] = useState('')
+  let [currentImage, setCurrentImage] = useState('')
+  let [currentRelease, setCurrentRelease] = useState('')
+  let [currentCountry, setCurrentCountry] = useState('')
+  let [currentGenre, setCurrentGenre] = useState('') 
+
 
   const ActivatePopular = () => {
     setPopular((
@@ -141,6 +147,26 @@ const App = () => {
             'https://www.youtube.com/embed/' + res.data.results[0].key
           )
 
+          setCurrentRelease(
+            props.release_date
+          )
+
+          setCurrentTitle(
+            props.title
+          )
+
+          setCurrentDescription(
+            props.overview
+          )
+
+          setCurrentRating(
+            props.vote_average.toFixed(1)
+          )
+          
+          setCurrentImage(
+            props.poster_path
+          )
+
           setCurrentVideoTitle(
             res.data.results[0].name
           )
@@ -161,9 +187,20 @@ const App = () => {
             popular, false
           ))
 
-          console.log(currentVideo)
+          axios.get(`https://api.themoviedb.org/3/movie/${props.id}?api_key=1b34b56c896270b1a9bdd7563b01f45d`).then(res => {
+
+            setCurrentCountry(
+              res.data.production_countries[0].name
+            )
+
+            setCurrentGenre(
+              res.data.genres.map(({name}) => ` ${name}`).join(',')
+            )
+
+          })
 
           window.scrollTo(0,0)
+
         }
         else
         {
@@ -207,7 +244,7 @@ const App = () => {
             <div className="rating-background">
   
               <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Star_icon_stylized.svg" className="Star-icon"></img>
-              <p className="Movie-rating">{props.vote_average}/10</p>
+              <p className="Movie-rating">{props.vote_average.toFixed(1)}/10</p>
   
             </div>
   
@@ -238,7 +275,7 @@ const App = () => {
       <header className="App-header">
         <ol className="Categorie-list">
           <li className="Title">
-            {title}
+            <h1>The Movie List</h1>
           </li>
 
           <li className="Categorie-list">
@@ -269,14 +306,29 @@ const App = () => {
       {video &&(
         <div className="video">
           <h1 className="video-title">{currentVideoTitle}</h1>
-        <ReactPlayer url={currentVideo} width={900} height={500}/>
+            <ReactPlayer url={currentVideo} width={900} height={500}/>
+
+          <div className="Movie-details">
+            <h1 className="Details-title">{currrentTitle}</h1>
+            <br></br>
+            <img src={currentImage} className="Details-image"></img>
+            <p className="Details-desc">{currrentDescription}</p>
+          </div>
+          <div className="Details-holder">
+            <p className="Details-type">Release: {currentRelease}</p>
+            <p className="Details-type">Country: {currentCountry}</p>
+            <p className="Details-type">Genres: {currentGenre}</p>
+          </div>
+
+          <p className="Details-rating"><img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Star_icon_stylized.svg" className="Details-star"></img>{currrentRating}/10</p>
+
         </div>
       )}
 
       <div className="movie-titles">
           {currentList.map((list) => {
             return (
-              <MovieInfo title={list.title} backdrop_path={'https://image.tmdb.org/t/p/w500/' + list.backdrop_path} poster_path={'https://image.tmdb.org/t/p/w500/' + list.poster_path} vote_average={list.vote_average} overview={list.overview} id={list.id}/>
+              <MovieInfo release_date={list.release_date} title={list.title} backdrop_path={'https://image.tmdb.org/t/p/w500/' + list.backdrop_path} poster_path={'https://image.tmdb.org/t/p/w500/' + list.poster_path} vote_average={list.vote_average} overview={list.overview} id={list.id}/>
             );
           })}
       </div>
