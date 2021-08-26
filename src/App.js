@@ -122,9 +122,7 @@ const App = () => {
       })
     }
 
-    console.log(similarMovies)
-
-  }, [popular, topMovies, upcomingMovies, similarMovies, currentMovieID] )
+  }, [popular, topMovies, upcomingMovies, currentMovieID] )
 
   const MovieInfo = (props) => {
     const [desc, setDescription] = useState(false)
