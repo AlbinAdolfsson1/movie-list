@@ -2,7 +2,6 @@ import { render } from '@testing-library/react';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './App.css';
-import { element } from 'prop-types';
 import ReactPlayer from 'react-player';
 
 let currentTitle = `The Movie List`;
