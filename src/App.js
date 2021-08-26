@@ -97,8 +97,6 @@ const App = () => {
       setList(
         res.data.results
       )
-
-      console.log(res.data)
     
       })
     }
@@ -109,8 +107,6 @@ const App = () => {
       setList(
         res.data.results
       )
-
-      console.log(res.data)
     
       })
     }
@@ -122,8 +118,6 @@ const App = () => {
         setList(
           res.data.results
         )
-
-        console.log(res.data)
     
       })
     }
@@ -170,8 +164,6 @@ const App = () => {
           setCurrentVideoTitle(
             res.data.results[0].name
           )
-
-          console.log(res.data.results)
 
           setVideo(true)
 
@@ -267,8 +259,6 @@ const App = () => {
       )
     }
   }
-
-  console.log(currentVideo)
 
   return (
     <div className="App">
