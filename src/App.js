@@ -14,6 +14,7 @@ const App = () => {
   let [currentVideoTitle, setCurrentVideoTitle] = useState('')
   let [currentMovieID, setCurrentMovieID] = useState()
   let [currentDetail, setCurrentDetail] = useState([])
+  let [pageNumber, setPageNumber] = useState(1)
 
   let [currrentTitle, setCurrentTitle] = useState('')
   let [currrentDescription, setCurrentDescription] = useState('')
@@ -40,6 +41,8 @@ const App = () => {
     setVideo((
       video = false
     ))
+
+    setPageNumber(1)
   }
 
   const ActivateTopMovies = () => {
@@ -58,6 +61,8 @@ const App = () => {
     setVideo((
       video = false
     ))
+
+    setPageNumber(1)
   }
 
   const ActivateUpcoming = () => {
@@ -76,23 +81,26 @@ const App = () => {
     setVideo((
       video = false
     ))
+
+    setPageNumber(1)
   }
 
   useEffect(() => {
 
     if (popular)
     {
-      axios.get('https://api.themoviedb.org/3/movie/popular?api_key=1b34b56c896270b1a9bdd7563b01f45d').then(res => {
+      axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=1b34b56c896270b1a9bdd7563b01f45d&language=en-US&page=${pageNumber}`).then(res => {
 
       setList(
         res.data.results
       )
+      
 
       })
     }
     else if (topMovies)
     {
-      axios.get('https://api.themoviedb.org/3/movie/top_rated?api_key=1b34b56c896270b1a9bdd7563b01f45d').then(res => {
+      axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=1b34b56c896270b1a9bdd7563b01f45d&language=en-US&page=${pageNumber}`).then(res => {
 
       setList(
         res.data.results
@@ -102,27 +110,42 @@ const App = () => {
     }
     else if (upcomingMovies)
     {
-      axios.get('https://api.themoviedb.org/3/movie/upcoming?api_key=1b34b56c896270b1a9bdd7563b01f45d').then(res => {
+      axios.get(`https://api.themoviedb.org/3/movie/upcoming?api_key=1b34b56c896270b1a9bdd7563b01f45d&language=en-US&page=${pageNumber}`).then(res => {
 
       setList(
         res.data.results
       )
+      console.log(res.data)
     
       })
     }
     
     if (video)
     {
-      axios.get(`https://api.themoviedb.org/3/movie/${currentMovieID}/similar?api_key=1b34b56c896270b1a9bdd7563b01f45d`).then(res => {
+
+      if (pageNumber == 1)
+      {
+        axios.get(`https://api.themoviedb.org/3/movie/${currentMovieID}/recommendations?api_key=1b34b56c896270b1a9bdd7563b01f45d`).then(res => {
 
         setList(
           res.data.results
         )
     
-      })
+        })
+      }
+      else if (pageNumber == 2) 
+      {
+        axios.get(`https://api.themoviedb.org/3/movie/${currentMovieID}/similar?api_key=1b34b56c896270b1a9bdd7563b01f45d`).then(res => {
+
+        setList(
+          res.data.results
+        )
+    
+        })
+      }
     }
 
-  }, [popular, topMovies, upcomingMovies, currentMovieID] )
+  }, [popular, topMovies, upcomingMovies, currentMovieID, pageNumber] )
 
   const MovieInfo = (props) => {
     const [desc, setDescription] = useState(false)
@@ -133,6 +156,7 @@ const App = () => {
 
         if (res.data.results[0])
         {
+
           setCurrentMovieID (
             props.id
           )
@@ -293,9 +317,16 @@ const App = () => {
 
       </header>
 
+      {!video &&(
+        <div className="Movie-pages">
+          <button id="foo" onClick={() => setPageNumber(1)}>1</button>
+          <button onClick={() => setPageNumber(2)}>2</button>
+          <button onClick={() => setPageNumber(3)}>3</button>
+        </div>
+      )}
+
       {video &&(
         <div className="video">
-          <h1 className="video-title">{currentVideoTitle}</h1>
             <ReactPlayer url={currentVideo} width={900} height={500}/>
 
           <div className="Movie-details">
@@ -311,6 +342,11 @@ const App = () => {
           </div>
 
           <p className="Details-rating"><img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Star_icon_stylized.svg" className="Details-star"></img>{currrentRating}/10</p>
+
+          <div className="Movie-related">
+            <button onClick={() => setPageNumber(1)}>Similar Movies</button>
+            <button onClick={() => setPageNumber(2)}>Recommendations</button>
+          </div>
 
         </div>
       )}
