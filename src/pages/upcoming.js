@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Video from '../components/video';
+import cn from 'classnames'
 
 const Upcoming = () => {
     const [currentMovieID, setCurrentMovieID] = useState()
@@ -107,9 +108,12 @@ const Upcoming = () => {
 
                 axios.get(`https://api.themoviedb.org/3/movie/${props.id}?api_key=1b34b56c896270b1a9bdd7563b01f45d`).then(res => {
 
-                setCurrentCountry(
-                    res.data.production_countries[0].name
-                )
+                if (res.data.production_countries[0])
+                {
+                    setCurrentCountry(
+                        res.data.production_countries[0].name
+                    )
+                }
 
                 setCurrentGenre(
                     res.data.genres.map(({name}) => ` ${name}`).join(',')
@@ -122,9 +126,7 @@ const Upcoming = () => {
             }
             else
             {
-                setVideo((
-                    video = false
-                ))
+                
             }
 
             })
@@ -191,9 +193,9 @@ const Upcoming = () => {
 
         {!video &&(
             <div className="Movie-pages">
-            <button onClick={() => setPageNumber(1)}>1</button>
-            <button onClick={() => setPageNumber(2)}>2</button>
-            <button onClick={() => setPageNumber(3)}>3</button>
+            <button className={cn('Page-button', {'Page-button-active': pageNumber === 1, })} onClick={() => setPageNumber(1)}>1</button>
+            <button className={cn('Page-button', {'Page-button-active': pageNumber === 2, })} onClick={() => setPageNumber(2)}>2</button>
+            <button className={cn('Page-button', {'Page-button-active': pageNumber === 3, })} onClick={() => setPageNumber(3)}>3</button>
             </div>
         )}
 
@@ -202,8 +204,8 @@ const Upcoming = () => {
                 <Video currentVideo={currentVideo} currrentTitle={currrentTitle} currentImage={currentImage} currrentDescription={currrentDescription} currentRelease={currentRelease} currentCountry={currentCountry} currentGenre={currentGenre} currrentRating={currrentRating} />
 
                 <div className="Movie-related">
-                    <button onClick={() => setPageNumber(1)}>Similar Movies</button>
-                    <button onClick={() => setPageNumber(2)}>Recommendations</button>
+                    <button className={cn('Page-button', {'Page-button-active': pageNumber === 1, })} onClick={() => setPageNumber(1)}>Similar Movies</button>
+                    <button className={cn('Page-button', {'Page-button-active': pageNumber === 2, })} onClick={() => setPageNumber(2)}>Recommendations</button>
                 </div>
             </div>
         )}

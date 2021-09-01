@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Video from '../components/video';
+import cn from 'classnames'
 
 const Popular = () => {
     const [currentMovieID, setCurrentMovieID] = useState()
@@ -194,9 +195,9 @@ const Popular = () => {
 
         {!video &&(
             <div className="Movie-pages">
-            <button onClick={() => setPageNumber(1)}>1</button>
-            <button onClick={() => setPageNumber(2)}>2</button>
-            <button onClick={() => setPageNumber(3)}>3</button>
+            <button className={cn('Page-button', {'Page-button-active': pageNumber === 1, })} onClick={() => setPageNumber(1)}>1</button>
+            <button className={cn('Page-button', {'Page-button-active': pageNumber === 2, })} onClick={() => setPageNumber(2)}>2</button>
+            <button className={cn('Page-button', {'Page-button-active': pageNumber === 3, })} onClick={() => setPageNumber(3)}>3</button>
             </div>
         )}
 
@@ -205,8 +206,8 @@ const Popular = () => {
                 <Video currentVideo={currentVideo} currrentTitle={currrentTitle} currentImage={currentImage} currrentDescription={currrentDescription} currentRelease={currentRelease} currentCountry={currentCountry} currentGenre={currentGenre} currrentRating={currrentRating} />
 
                 <div className="Movie-related">
-                    <button onClick={() => setPageNumber(1)}>Similar Movies</button>
-                    <button onClick={() => setPageNumber(2)}>Recommendations</button>
+                    <button className={cn('Page-button', {'Page-button-active': pageNumber === 1, })} onClick={() => setPageNumber(1)}>Similar Movies</button>
+                    <button className={cn('Page-button', {'Page-button-active': pageNumber === 2, })} onClick={() => setPageNumber(2)}>Recommendations</button>
                 </div>
             </div>
         )}

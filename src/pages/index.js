@@ -21,8 +21,6 @@ const IndexPage = (props) => {
     }
   ]
 
-  const [pageNumber, setPageNumber] = useState(1)
-
   console.log(props.video)
 
   return (
