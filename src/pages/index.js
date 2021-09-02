@@ -1,21 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import '../App.css';
 import TabView from '../components/tab-view/index';
-import Upcoming from './upcoming';
+import Upcoming from './Upcoming';
 import Popular from './Popular';
 import TopMovies from './TopMovies';
+import {BrowserRouter as Router,
+Switch,
+Route
+} from "react-router-dom";
+
 
 const IndexPage = (props) => {
   const tabViews = [
     {
+        path: '/upcoming',
         label: 'Upcoming',
         component: <Upcoming />,
     },
     {
+        path: '/popular',
         label: 'Popular',
         component: <Popular />,
     },
     {
+        path: '/topMovies',
         label: 'Top Movies',
         component: <TopMovies />,
     }
@@ -25,7 +33,7 @@ const IndexPage = (props) => {
 
   return (
     <div className="App">
-        <TabView views={tabViews} />
+      <TabView views={tabViews} />
     </div>
     
   );

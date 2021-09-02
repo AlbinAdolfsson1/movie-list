@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import IndexPage from '../pages/index';
-import Upcoming from '../pages/upcoming';
+import Upcoming from '../pages/Upcoming';
 import Popular from '../pages/Popular';
 import TopMovies from '../pages/TopMovies';
 
@@ -40,7 +40,6 @@ export default function RouteConfig() {
 function RouteWithSubRoutes(route) {
     return (
         <Route
-            path={route.path}
             render={props => <route.component {...props} routes={route.routes} />}
         />
     )

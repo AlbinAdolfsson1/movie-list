@@ -6,6 +6,7 @@ import cn from 'classnames'
 const Popular = () => {
     const [currentMovieID, setCurrentMovieID] = useState()
     const [pageNumber, setPageNumber] = useState(1)
+
     let [movieList, setMovieList] = useState([])
     let [video, setVideo] = useState(false)
     let [currentVideo, setCurrentVideo] = useState('')
@@ -21,7 +22,7 @@ const Popular = () => {
 
     useEffect(() => {
 
-        if (video){
+        if (video) {
 
             if (pageNumber == 1)
             {
