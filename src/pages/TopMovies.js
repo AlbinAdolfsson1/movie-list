@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Video from '../components/video';
-import cn from 'classnames'
+import cn from 'classnames';
+import { Route, Link, Switch, Redirect } from 'react-router-dom';
 
 const TopMovies = () => {
     const [currentMovieID, setCurrentMovieID] = useState()
     const [pageNumber, setPageNumber] = useState(1)
+    const [maxPage, setMaxPage] = useState(0)
 
     let [movieList, setMovieList] = useState([])
     let [video, setVideo] = useState(false)
@@ -53,6 +55,10 @@ const TopMovies = () => {
             setMovieList(
                 res.data.results
                 
+            )
+
+            setMaxPage(
+              res.data.total_pages
             )
             
             })
@@ -146,8 +152,10 @@ const TopMovies = () => {
                 <li className="Movie-list">
       
                 <div className="Movie-background">
-      
+
+                <Link to='/'>
                   <img src={props.poster_path} className="Movie-image" onMouseEnter={() => setDescription(true)} onMouseLeave={() => setDescription(false)} onClick={activateVideo} ></img>
+                </Link>
       
                   {desc &&(
                     <div className="Description-window">
@@ -196,9 +204,21 @@ const TopMovies = () => {
 
         {!video &&(
             <div className="Movie-pages">
-            <button className={cn('Page-button', {'Page-button-active': pageNumber === 1, })} onClick={() => setPageNumber(1)}>1</button>
-            <button className={cn('Page-button', {'Page-button-active': pageNumber === 2, })} onClick={() => setPageNumber(2)}>2</button>
-            <button className={cn('Page-button', {'Page-button-active': pageNumber === 3, })} onClick={() => setPageNumber(3)}>3</button>
+              <Link to='/topMovies/1'>
+                <button className={cn('Page-button', {'Page-button-active': pageNumber === 1, })} onClick={() => setPageNumber(1)}>1</button>
+              </Link>
+              <Link to='/topMovies/2'>
+                <button className={cn('Page-button', {'Page-button-active': pageNumber === 2, })} onClick={() => setPageNumber(2)}>2</button>
+              </Link>
+              <Link to='/topMovies/3'>
+                <button className={cn('Page-button', {'Page-button-active': pageNumber === 3, })} onClick={() => setPageNumber(3)}>3</button>
+              </Link>
+              <Link to='/topMovies/4'>
+                <button className={cn('Page-button', {'Page-button-active': pageNumber === 4, })} onClick={() => setPageNumber(4)}>4</button>
+              </Link>
+              <Link to='/topMovies/5'>
+                <button className={cn('Page-button', {'Page-button-active': pageNumber === 5, })} onClick={() => setPageNumber(5)}>5</button>
+              </Link>
             </div>
         )}
 
@@ -220,6 +240,26 @@ const TopMovies = () => {
             );
             })}
         </div>
+
+        {!video &&(
+            <div className="Movie-pages-bottom">
+              <Link to='/topMovies/1'>
+                <button className={cn('Page-button', {'Page-button-active': pageNumber === 1, })} onClick={() => setPageNumber(1)}>1</button>
+              </Link>
+              <Link to='/topMovies/2'>
+                <button className={cn('Page-button', {'Page-button-active': pageNumber === 2, })} onClick={() => setPageNumber(2)}>2</button>
+              </Link>
+              <Link to='/topMovies/3'>
+                <button className={cn('Page-button', {'Page-button-active': pageNumber === 3, })} onClick={() => setPageNumber(3)}>3</button>
+              </Link>
+              <Link to='/topMovies/4'>
+                <button className={cn('Page-button', {'Page-button-active': pageNumber === 4, })} onClick={() => setPageNumber(4)}>4</button>
+              </Link>
+              <Link to='/topMovies/5'>
+                <button className={cn('Page-button', {'Page-button-active': pageNumber === 5, })} onClick={() => setPageNumber(5)}>5</button>
+              </Link>
+            </div>
+        )}
 
     </div>
     

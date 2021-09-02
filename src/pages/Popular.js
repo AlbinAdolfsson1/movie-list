@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Video from '../components/video';
-import cn from 'classnames'
+import cn from 'classnames';
+import { Route, Link, Switch, Redirect } from 'react-router-dom';
 
 const Popular = () => {
     const [currentMovieID, setCurrentMovieID] = useState()
@@ -18,7 +19,7 @@ const Popular = () => {
     let [currentImage, setCurrentImage] = useState('')
     let [currentRelease, setCurrentRelease] = useState('')
     let [currentCountry, setCurrentCountry] = useState('')
-    let [currentGenre, setCurrentGenre] = useState('') 
+    let [currentGenre, setCurrentGenre] = useState('')
 
     useEffect(() => {
 
@@ -28,19 +29,23 @@ const Popular = () => {
             {
                 axios.get(`https://api.themoviedb.org/3/movie/${currentMovieID}/recommendations?api_key=1b34b56c896270b1a9bdd7563b01f45d`).then(res => {
 
-                setMovieList(
-                res.data.results
-                )
-            
-                })
+                if (res.data.results){
+                  setMovieList(
+                  res.data.results
+                  )
+                }
+
+              })
             }
             else if (pageNumber == 2) 
             {
                 axios.get(`https://api.themoviedb.org/3/movie/${currentMovieID}/similar?api_key=1b34b56c896270b1a9bdd7563b01f45d`).then(res => {
 
-                setMovieList(
-                res.data.results
-                )
+                if (res.data.results){
+                  setMovieList(
+                  res.data.results
+                  )
+                }
             
                 })
             }
@@ -147,8 +152,10 @@ const Popular = () => {
       
                 <div className="Movie-background">
       
+                <Link to='/'>
                   <img src={props.poster_path} className="Movie-image" onMouseEnter={() => setDescription(true)} onMouseLeave={() => setDescription(false)} onClick={activateVideo} ></img>
-      
+                </Link>
+
                   {desc &&(
                     <div className="Description-window">
                     <br/>
@@ -196,9 +203,21 @@ const Popular = () => {
 
         {!video &&(
             <div className="Movie-pages">
-            <button className={cn('Page-button', {'Page-button-active': pageNumber === 1, })} onClick={() => setPageNumber(1)}>1</button>
-            <button className={cn('Page-button', {'Page-button-active': pageNumber === 2, })} onClick={() => setPageNumber(2)}>2</button>
-            <button className={cn('Page-button', {'Page-button-active': pageNumber === 3, })} onClick={() => setPageNumber(3)}>3</button>
+              <Link to='/popular/1'>
+                <button className={cn('Page-button', {'Page-button-active': pageNumber === 1, })} onClick={() => setPageNumber(1)}>1</button>
+              </Link>
+              <Link to='/popular/2'>
+                <button className={cn('Page-button', {'Page-button-active': pageNumber === 2, })} onClick={() => setPageNumber(2)}>2</button>
+              </Link>
+              <Link to='/popular/3'>
+                <button className={cn('Page-button', {'Page-button-active': pageNumber === 3, })} onClick={() => setPageNumber(3)}>3</button>
+              </Link>
+              <Link to='/popular/4'>
+                <button className={cn('Page-button', {'Page-button-active': pageNumber === 4, })} onClick={() => setPageNumber(4)}>4</button>
+              </Link>
+              <Link to='/popular/5'>
+                <button className={cn('Page-button', {'Page-button-active': pageNumber === 5, })} onClick={() => setPageNumber(5)}>5</button>
+              </Link>
             </div>
         )}
 
@@ -220,6 +239,26 @@ const Popular = () => {
             );
             })}
         </div>
+
+        {!video &&(
+            <div className="Movie-pages-bottom">
+              <Link to='/popular/1'>
+                <button className={cn('Page-button', {'Page-button-active': pageNumber === 1, })} onClick={() => setPageNumber(1)}>1</button>
+              </Link>
+              <Link to='/popular/2'>
+                <button className={cn('Page-button', {'Page-button-active': pageNumber === 2, })} onClick={() => setPageNumber(2)}>2</button>
+              </Link>
+              <Link to='/popular/3'>
+                <button className={cn('Page-button', {'Page-button-active': pageNumber === 3, })} onClick={() => setPageNumber(3)}>3</button>
+              </Link>
+              <Link to='/popular/4'>
+                <button className={cn('Page-button', {'Page-button-active': pageNumber === 4, })} onClick={() => setPageNumber(4)}>4</button>
+              </Link>
+              <Link to='/popular/5'>
+                <button className={cn('Page-button', {'Page-button-active': pageNumber === 5, })} onClick={() => setPageNumber(5)}>5</button>
+              </Link>
+            </div>
+        )}
 
     </div>
     

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Video from '../components/video';
 import cn from 'classnames'
-import { Route, Link, Switch } from 'react-router-dom';
+import { Route, Link, Switch, Redirect } from 'react-router-dom';
 
 const Upcoming = () => {
     const [currentMovieID, setCurrentMovieID] = useState()
@@ -60,7 +60,7 @@ const Upcoming = () => {
 
         }
         
-    }, [pageNumber, currentMovieID] )
+    }, [pageNumber, currentMovieID, video] )
 
     const MovieInfo = (props) => {
         const [desc, setDescription] = useState(false)
@@ -141,56 +141,55 @@ const Upcoming = () => {
         if (props.id != currentMovieID)
         {
           return (
-            <Switch>
-              <Route path="/upcoming">
-                <div>
-          
-                  <ol className="Movie-list">
-                    <li className="Movie-list">
-          
-                    <div className="Movie-background">
+              <div>
+        
+                <ol className="Movie-list">
+                  <li className="Movie-list">
+        
+                  <div className="Movie-background">
 
-                        <img src={props.poster_path} className="Movie-image" onMouseEnter={() => setDescription(true)} onMouseLeave={() => setDescription(false)} onClick={activateVideo} ></img>
+                  <Link to='/'>
+                    <img src={props.poster_path} className="Movie-image" onMouseEnter={() => setDescription(true)} onMouseLeave={() => setDescription(false)} onClick={activateVideo} ></img>
+                  </Link>
 
-                      {desc &&(
-                        <div className="Description-window">
-                        <br/>
-                        <br/>
-                        <br/>
-                        <br/>
-                        <br/>
-                        <br/>
-                        <h1 className="Movie-title">{props.title} </h1>
-                        <p>{props.overview}</p>
-                      </div>
-                      )}
-          
+                    {desc &&(
+                      <div className="Description-window">
+                      <br/>
+                      <br/>
+                      <br/>
+                      <br/>
+                      <br/>
+                      <br/>
+                      <h1 className="Movie-title">{props.title} </h1>
+                      <p>{props.overview}</p>
                     </div>
-          
-                    <div className="rating-background">
-          
-                      <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Star_icon_stylized.svg" className="Star-icon"></img>
-                      <p className="Movie-rating">{props.vote_average.toFixed(1)}/10</p>
+                    )}
+        
+                  </div>
+        
+                  <div className="rating-background">
+        
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Star_icon_stylized.svg" className="Star-icon"></img>
+                    <p className="Movie-rating">{props.vote_average.toFixed(1)}/10</p>
 
-                    </div>
-          
-                    <div className="rate-background">
-                      <br></br>
-                    </div>
-          
-                  </li>
-                  </ol>
-          
-                </div>
-              </Route>
-            </Switch>
+                  </div>
+        
+                  <div className="rate-background">
+                    <br></br>
+                  </div>
+        
+                </li>
+                </ol>
+        
+              </div>
+              
           )
         }
         else
         {
           return (
             <div>
-
+              
             </div>
           )
         }
@@ -201,15 +200,21 @@ const Upcoming = () => {
 
             {!video &&(
                 <div className="Movie-pages">
-                <Link to='/upcoming/1'>
-                  <button className={cn('Page-button', {'Page-button-active': pageNumber === 1, })} onClick={() => setPageNumber(1)}>1</button>
-                </Link>
-                <Link to='/upcoming/2'>
-                  <button className={cn('Page-button', {'Page-button-active': pageNumber === 2, })} onClick={() => setPageNumber(2)}>2</button>
-                </Link>
-                <Link to='/upcoming/3'>
-                  <button className={cn('Page-button', {'Page-button-active': pageNumber === 3, })} onClick={() => setPageNumber(3)}>3</button>
-                </Link>
+                  <Link to='/upcoming/1'>
+                    <button className={cn('Page-button', {'Page-button-active': pageNumber === 1, })} onClick={() => setPageNumber(1)}>1</button>
+                  </Link>
+                  <Link to='/upcoming/2'>
+                    <button className={cn('Page-button', {'Page-button-active': pageNumber === 2, })} onClick={() => setPageNumber(2)}>2</button>
+                  </Link>
+                  <Link to='/upcoming/3'>
+                    <button className={cn('Page-button', {'Page-button-active': pageNumber === 3, })} onClick={() => setPageNumber(3)}>3</button>
+                  </Link>
+                  <Link to='/upcoming/4'>
+                    <button className={cn('Page-button', {'Page-button-active': pageNumber === 4, })} onClick={() => setPageNumber(4)}>4</button>
+                  </Link>
+                  <Link to='/upcoming/5'>
+                    <button className={cn('Page-button', {'Page-button-active': pageNumber === 5, })} onClick={() => setPageNumber(5)}>5</button>
+                  </Link>
                 </div>
             )}
 
@@ -217,20 +222,40 @@ const Upcoming = () => {
                 <div>
                     <Video currentVideo={currentVideo} currrentTitle={currrentTitle} currentImage={currentImage} currrentDescription={currrentDescription} currentRelease={currentRelease} currentCountry={currentCountry} currentGenre={currentGenre} currrentRating={currrentRating} />
 
-                    <div className="Movie-related">
-                        <button className={cn('Page-button', {'Page-button-active': pageNumber === 1, })} onClick={() => setPageNumber(1)}>Similar Movies</button>
-                        <button className={cn('Page-button', {'Page-button-active': pageNumber === 2, })} onClick={() => setPageNumber(2)}>Recommendations</button>
-                    </div>
+                  <div className="Movie-related">
+                      <button className={cn('Page-button', {'Page-button-active': pageNumber === 1, })} onClick={() => setPageNumber(1)}>Similar Movies</button>
+                      <button className={cn('Page-button', {'Page-button-active': pageNumber === 2, })} onClick={() => setPageNumber(2)}>Recommendations</button>
+                  </div>
                 </div>
             )}
 
-            <div className="movie-titles">
+            <div className="Movie-titles">
                 {movieList.map((list) => {
                 return (
                     <MovieInfo release_date={list.release_date} title={list.title} backdrop_path={'https://image.tmdb.org/t/p/w500/' + list.backdrop_path} poster_path={'https://image.tmdb.org/t/p/w500/' + list.poster_path} vote_average={list.vote_average} overview={list.overview} id={list.id}/>
                 );
                 })}
             </div>
+
+            {!video &&(
+                <div className="Movie-pages-bottom">
+                  <Link to='/upcoming/1'>
+                    <button className={cn('Page-button', {'Page-button-active': pageNumber === 1, })} onClick={() => setPageNumber(1)}>1</button>
+                  </Link>
+                  <Link to='/upcoming/2'>
+                    <button className={cn('Page-button', {'Page-button-active': pageNumber === 2, })} onClick={() => setPageNumber(2)}>2</button>
+                  </Link>
+                  <Link to='/upcoming/3'>
+                    <button className={cn('Page-button', {'Page-button-active': pageNumber === 3, })} onClick={() => setPageNumber(3)}>3</button>
+                  </Link>
+                  <Link to='/upcoming/4'>
+                    <button className={cn('Page-button', {'Page-button-active': pageNumber === 4, })} onClick={() => setPageNumber(4)}>4</button>
+                  </Link>
+                  <Link to='/upcoming/5'>
+                    <button className={cn('Page-button', {'Page-button-active': pageNumber === 5, })} onClick={() => setPageNumber(5)}>5</button>
+                  </Link>
+                </div>
+            )}
 
         </div>
     );

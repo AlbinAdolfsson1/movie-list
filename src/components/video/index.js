@@ -5,6 +5,7 @@ const Video = (props) => {
 
     const [pageNumber, setPageNumber] = useState(1)
 
+    console.log(props.currentVideo);
 
     return (
         <div>

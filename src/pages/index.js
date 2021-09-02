@@ -4,10 +4,7 @@ import TabView from '../components/tab-view/index';
 import Upcoming from './Upcoming';
 import Popular from './Popular';
 import TopMovies from './TopMovies';
-import {BrowserRouter as Router,
-Switch,
-Route
-} from "react-router-dom";
+
 
 
 const IndexPage = (props) => {
