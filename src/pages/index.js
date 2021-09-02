@@ -1,37 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import '../App.css';
-import TabView from '../components/tab-view/index';
-import Upcoming from './Upcoming';
-import Popular from './Popular';
-import TopMovies from './TopMovies';
+import Layout from '../components/Layout';
 
-
-
-const IndexPage = (props) => {
-  const tabViews = [
-    {
-        path: '/upcoming',
-        label: 'Upcoming',
-        component: <Upcoming />,
-    },
-    {
-        path: '/popular',
-        label: 'Popular',
-        component: <Popular />,
-    },
-    {
-        path: '/topMovies',
-        label: 'Top Movies',
-        component: <TopMovies />,
-    }
-  ]
-
-  console.log(props.video)
-
+const IndexPage = () => {
   return (
-    <div className="App">
-      <TabView views={tabViews} />
-    </div>
+    <Layout className="App">
+      <h1>The movie list</h1>
+    </Layout>
     
   );
 }
