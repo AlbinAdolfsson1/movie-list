@@ -37,13 +37,15 @@ const Movie = () => {
           setMovieList(res.data.results)
         })
 
+        window.scrollTo(0, 0)
+
         console.log(movie)
     }, [movie])
 
     return (
         <Layout>
             <Video movieData={movieData} movieCountry={movieCountry} movieGenres={movieGenres} movieTrailer={movieVideo}/>
-            
+
             {movieList.map(movie => (
                 <MovieInfo key={movie.id} release_date={movie.release_date} title={movie.title} backdrop_path={'https://image.tmdb.org/t/p/w500/' + movie.backdrop_path} poster_path={'https://image.tmdb.org/t/p/w500/' + movie.poster_path} vote_average={movie.vote_average} overview={movie.overview} id={movie.id} />
             ))}
