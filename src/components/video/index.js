@@ -1,7 +1,5 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import ReactPlayer from 'react-player';
-import Layout from '../layout/layout';
 
 const Video = ( { movieData, movieCountry, movieGenres, movieTrailer } ) => {
 
