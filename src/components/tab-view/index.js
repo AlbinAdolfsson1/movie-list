@@ -1,49 +1,26 @@
-import React, { useState } from 'react';
-import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
-import cn from 'classnames';
+import React from 'react';
+import { NavLink } from "react-router-dom";
 
 const TabView = ({ views }) => {
-    const [activeTab, setActiveTab] = useState(1);
 
     return (
         <div>
             <header className="App-header">
-                <ol className="Categorie-list">
-                    <li className="Title">
-                        <h1>The Movie List</h1>
-                    </li>
+                <div className="App-title">
+                    <h1>The Movie List</h1>
+                </div>
 
+                <ul className="Categorie-list">
                     {views.map((m , i) => (
-                        <div>
-                            <li className="Categorie-list">
-                                <Link to={m.path}>
-                                    <button className={cn('TabView-menu', {'TabView-menu-active': activeTab === i, })} onClick={() => setActiveTab(i)} key={`${m.label}-${i}`}>
-                                    {m.label}
-                                    </button>
-                                </Link>
-                            </li>
-                        </div>
+                        <li className="Categorie-list">
+                            <NavLink exact={true} to={m.path} className='TabView-menu'>
+                                {m.label}
+                            </NavLink>
+                        </li>
                     ))}
-                </ol>
+                </ul>
 
             </header>
-
-            <div>
-                <Switch>
-                    <Route path="/upcoming">
-                        {views[0].component}
-                    </Route>
-                    <Route path="/popular">
-                        {views[1].component}
-                    </Route>
-                    <Route path="/topMovies">
-                        {views[2].component}
-                    </Route>
-                    <Route path="/">
-                        {views[activeTab].component}
-                    </Route>
-                </Switch>
-            </div>
         </div>
     );
 }

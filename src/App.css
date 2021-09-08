@@ -3,7 +3,7 @@ html{
   background-color: #202227;
 }
 
-.App {
+.Layout {
   text-align: center;
 }
 
@@ -44,18 +44,22 @@ html{
   float: right;
 }
 
-.Categorie-list button{
+.Categorie-list a{
   font-size: 30px;
   border: none; 
   background-color: rgba(0, 0, 0, 0);
 }
 
-.Categorie-list button:hover{ 
+.Categorie-list a:hover{ 
   font-size: 30px;
   border: none; 
   background-color: rgba(0, 0, 0, 0);
   color: #1590b6;
   text-decoration: underline;
+}
+
+a.active{
+  color:#1590b6;
 }
 
 .TabView-menu {
@@ -218,7 +222,7 @@ html{
 
 .Details-rating {
   float: right;
-  margin-top: -125px;
+  margin-top: -145px;
   margin-right: -30px;
   font-size: 20px;
 }
