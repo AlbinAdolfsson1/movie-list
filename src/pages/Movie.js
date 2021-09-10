@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
-
-
 import Layout from '../components/layout/layout'
 import Video from '../components/video'
 import { MovieInfo } from '../components/movie-info/movieInfo'
@@ -20,7 +18,6 @@ const Movie = () => {
             setMovieData(res.data)
             setMovieCountry(res.data.production_countries[0].name)
             setMovieGenres(res.data.genres.map(({name}) => ` ${name}`).join(','))
-            console.log(res.data)
         })
 
         axios.get(`https://api.themoviedb.org/3/movie/${movie}/videos?api_key=1b34b56c896270b1a9bdd7563b01f45d&language=en-US`).then(res => {
@@ -37,6 +34,7 @@ const Movie = () => {
         })
 
         window.scrollTo(0, 0)
+        
     }, [movie])
 
     return (

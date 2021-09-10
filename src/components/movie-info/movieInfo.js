@@ -8,7 +8,7 @@ export const MovieInfo = (props) => {
     return (
         <Link to={`/movie/${kebabCase(props.id)}/${kebabCase(props.title)}`}>
   
-          <ol className="Movie-list">
+          <ol className="Movie-list"> 
             <li className="Movie-list">
   
             <div className="Movie-background">

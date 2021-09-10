@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import IndexPage from '../pages/index';
 import MovieList from '../pages/MovieList';
 import Movie from '../pages/Movie';
+import SearchedMovies from '../pages/SearchedMovies';
 
 export const routes = [
     {
@@ -28,6 +29,10 @@ export const routes = [
     {
         path: '/movie/:movie',
         component: Movie,
+    },
+    {
+        path: '/search/:search',
+        component: SearchedMovies,
     },
 ]
 
