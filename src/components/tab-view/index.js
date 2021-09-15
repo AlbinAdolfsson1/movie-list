@@ -18,8 +18,8 @@ const TabView = ({ views }) => {
 
                 <ul className="Categorie-list">
                     {views.map((m , i) => (
-                        <li className="Categorie-list">
-                            <NavLink key={m.path} exact={true} to={m.path} className='TabView-menu'>
+                        <li key={m.label} className="Categorie-list">
+                            <NavLink exact={true} to={m.path} className='TabView-menu'>
                                 {m.label}
                             </NavLink>
                         </li>

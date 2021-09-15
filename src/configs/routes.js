@@ -43,7 +43,8 @@ export default function RouteConfig() {
                 {routes.map((route, i ) => {
                     const Component = route.component
                     return (
-                        <Route 
+                        <Route
+                            key={route.path} 
                             path={route.path}
                             exact={route.exact}
                             render={props => <Component {...props} />}
