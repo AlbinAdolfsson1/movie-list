@@ -6,15 +6,21 @@ export const MovieInfo = (props) => {
     const [desc, setDescription] = useState(false)
   
     return (
-        <Link to={`/movie/${kebabCase(props.id)}/${kebabCase(props.title)}`}>
+        <Link to={`/home/${props.listType}/${kebabCase(props.id)}/${kebabCase(props.title)}`}>
   
           <ol className="Movie-list"> 
             <li className="Movie-list">
   
             <div className="Movie-background">
+
+              {props.poster_path &&(
+                <img src={props.poster_path} alt="" className="Movie-image" onMouseEnter={() => setDescription(true)} onMouseLeave={() => setDescription(false)} ></img>
+              )}
+
+              {!props.poster_path &&(
+                <img src={props.backdrop_path} alt="" className="Movie-image" onMouseEnter={() => setDescription(true)} onMouseLeave={() => setDescription(false)} ></img>
+              )}
               
-                  <img src={props.poster_path} className="Movie-image" onMouseEnter={() => setDescription(true)} onMouseLeave={() => setDescription(false)} ></img>
-  
                 {desc &&(
                   <div className="Description-window">
                   <br/>
@@ -32,7 +38,7 @@ export const MovieInfo = (props) => {
   
             <div className="rating-background">
   
-              <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Star_icon_stylized.svg" className="Star-icon"></img>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Star_icon_stylized.svg" alt="" className="Star-icon"></img>
               <p className="Movie-rating">{props.vote_average.toFixed(1)}/10</p>
   
             </div>

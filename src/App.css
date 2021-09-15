@@ -13,7 +13,7 @@ html{
   border-radius: 8px;
   border:none;
   float:right;
-  margin-top: -150px;
+  margin-top: -130px;
   margin-right: 40px;
   font-size: 30px;
   text-align: center;
@@ -25,7 +25,7 @@ html{
   border-radius: 3px;
   border: 2px solid #137e9f;
   float:right;
-  margin-top: -95px;
+  margin-top: -75px;
   margin-right: 40px;
   margin-bottom: 50px;
   font-size: 20px;
@@ -54,7 +54,7 @@ html{
 
 .App-title {
   text-align: left;
-  padding-left: 80px;
+  padding-left: 40px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -170,6 +170,11 @@ a.active{
   float: right;
 }
 
+.List-type {
+  margin-top: -50px;
+  float: left;
+}
+
 .Movie-pages-bottom {
   float: right;
   margin-bottom: 20px;
@@ -195,6 +200,19 @@ a.active{
 }
 
 .Page-button:hover {
+  background-color: #117a9a;
+}
+
+.Type-button {
+  width: 100px;
+  height: 50px;
+  font-size: 20px;
+  background-color: #1590b6;
+  border: 1px solid #127fa0;
+  color: #ffff;
+}
+
+.Type-button:hover {
   background-color: #117a9a;
 }
 

@@ -14,20 +14,20 @@ export const routes = [
     {
         path: '/upcoming',
         label: 'Upcoming',
-        component: () => <MovieList listType="upcoming" />,
+        component: () => <MovieList categorieType="upcoming" />,
     },
     {
         path: '/popular',
         label: 'Popular',
-        component: () => <MovieList listType="popular" />,
+        component: () => <MovieList categorieType="popular" />,
     },
     {
         path: '/topMovies',
         label: 'Top Movies',
-        component: () => <MovieList listType="top_rated" />,
+        component: () => <MovieList categorieType="top_rated" />,
     },
     {
-        path: '/movie/:movie',
+        path: '/home/:listType/:movie',
         component: Movie,
     },
     {

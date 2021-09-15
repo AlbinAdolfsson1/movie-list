@@ -7,6 +7,7 @@ import { MovieInfo } from '../components/movie-info/movieInfo'
 
 const Movie = () => {
     const { movie } = useParams()
+    const { listType } = useParams()
     const [movieData, setMovieData] = useState([])
     const [movieList, setMovieList] = useState([])
     const [movieCompanies, setMovieCampany] = useState('')
@@ -15,7 +16,7 @@ const Movie = () => {
     const [movieVideo, setCurrentMovieVideo] = useState('')
 
     useEffect(() => {
-        axios.get(`https://api.themoviedb.org/3/movie/${movie}?api_key=1b34b56c896270b1a9bdd7563b01f45d&language=en-US`).then(res => {
+        axios.get(`https://api.themoviedb.org/3/${listType}/${movie}?api_key=1b34b56c896270b1a9bdd7563b01f45d&language=en-US`).then(res => {
             setMovieData(res.data)
             if (res.data.production_countries[0]) setMovieCountry(res.data.production_countries[0].name)
             setMovieGenres(res.data.genres.map(({name}) => ` ${name}`).join(','))
@@ -24,11 +25,11 @@ const Movie = () => {
             console.log(res.data)
         })
 
-        axios.get(`https://api.themoviedb.org/3/movie/${movie}/videos?api_key=1b34b56c896270b1a9bdd7563b01f45d&language=en-US`).then(res => {
+        axios.get(`https://api.themoviedb.org/3/${listType}/${movie}/videos?api_key=1b34b56c896270b1a9bdd7563b01f45d&language=en-US`).then(res => {
             if (res.data.results[0]) setCurrentMovieVideo('https://www.youtube.com/embed/' + res.data.results[0].key)
         })
 
-        axios.get(`https://api.themoviedb.org/3/movie/${movie}/similar?api_key=1b34b56c896270b1a9bdd7563b01f45d&language=en-US`).then(res => {
+        axios.get(`https://api.themoviedb.org/3/${listType}/${movie}/similar?api_key=1b34b56c896270b1a9bdd7563b01f45d&language=en-US`).then(res => {
           setMovieList(res.data.results)
         })
 
@@ -42,7 +43,7 @@ const Movie = () => {
                 <Video movieData={movieData} movieCountry={movieCountry} movieGenres={movieGenres} movieTrailer={movieVideo} movieCompanies={movieCompanies}/>
 
                 {movieList.map(movie => (
-                    <MovieInfo key={movie.id} release_date={movie.release_date} title={movie.title} backdrop_path={'https://image.tmdb.org/t/p/w500/' + movie.backdrop_path} poster_path={'https://image.tmdb.org/t/p/w500/' + movie.poster_path} vote_average={movie.vote_average} overview={movie.overview} id={movie.id} />
+                    <MovieInfo key={movie.id} listType={listType} release_date={movie.release_date} title={movie.title} backdrop_path={'https://image.tmdb.org/t/p/w500/' + movie.backdrop_path} poster_path={'https://image.tmdb.org/t/p/w500/' + movie.poster_path} vote_average={movie.vote_average} overview={movie.overview} id={movie.id} />
                 ))}
 
             </div>

@@ -12,9 +12,7 @@ const TabView = ({ views }) => {
                     <NavLink exact={true} to='/' className='TabView-menu'>
                         <h1>The Movie List</h1>
                     </NavLink>
-                </div>
-
-                <div>
+                    
                     <SearchBar keyword={keyword} setKeyword={setKeyword}/>
                 </div>
 
