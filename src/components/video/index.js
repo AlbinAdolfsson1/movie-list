@@ -1,13 +1,21 @@
 import React from 'react';
 import ReactPlayer from 'react-player';
+import { Link } from "react-router-dom";
 
-const Video = ( { movieData, movieCountry, movieGenres, movieTrailer, movieCompanies } ) => {
+const Video = ( { movieData, movieCountry, movieGenres, movieTrailer, movieCompanies, movieStream } ) => {
 
     return (
         <div>
+
+            <img src={'https://image.tmdb.org/t/p/w500/' + movieData. backdrop_path} alt="" className="Details-backdrop"></img>
+
             <div className="video">
                 {movieTrailer &&(
-                    <ReactPlayer url={movieTrailer} width={900} height={500}/>
+                    <ReactPlayer url={movieTrailer} className="Video-player" width={900} height={500}/>
+                )}
+                
+                {movieStream &&(
+                    <a href={movieStream} className="Details-stream"><h1>Watch Movie</h1></a>
                 )}
 
                 <div className="Movie-details">

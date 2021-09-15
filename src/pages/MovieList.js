@@ -26,7 +26,7 @@ const MovieList = ({ categorieType }) => {
         <Layout className="App">
 
             <div className="Movie-pages">
-              <Pagination setPageNumber={setPageNumber} pageNumber={pageNumber} maxPage={maxpage}/>
+              <Pagination key={pageNumber} setPageNumber={setPageNumber} pageNumber={pageNumber} maxPage={maxpage}/>
             </div>
 
             {categorieType !== 'upcoming' &&(
@@ -44,7 +44,7 @@ const MovieList = ({ categorieType }) => {
 
           {pageNumber !== maxpage &&(
             <div className="Movie-pages-bottom">
-              <Pagination setPageNumber={setPageNumber} pageNumber={pageNumber} maxPage={maxpage}/>
+              <Pagination key={pageNumber} setPageNumber={setPageNumber} pageNumber={pageNumber} maxPage={maxpage}/>
             </div> 
           )}
 
