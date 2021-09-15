@@ -13,16 +13,10 @@ export const MovieInfo = (props) => {
   
             <div className="Movie-background">
 
-              {props.poster_path &&(
-                <img src={props.poster_path} alt="" className="Movie-image" onMouseEnter={() => setDescription(true)} onMouseLeave={() => setDescription(false)} ></img>
-              )}
-
-              {!props.poster_path &&(
-                <img src={props.backdrop_path} alt="" className="Movie-image" onMouseEnter={() => setDescription(true)} onMouseLeave={() => setDescription(false)} ></img>
-              )}
-              
-                {desc &&(
-                  <div className="Description-window">
+              <img src={props.poster_path} alt="" className="Movie-image" onMouseEnter={() => setDescription(true)} onMouseLeave={() => setDescription(false)} ></img>
+            
+              {desc &&(
+                <div className="Description-window">
                   <br/>
                   <br/>
                   <br/>

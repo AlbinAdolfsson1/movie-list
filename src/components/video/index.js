@@ -1,12 +1,11 @@
 import React from 'react';
 import ReactPlayer from 'react-player';
-import ListType from '../ListType/list-type';
 
 const Video = ( { movieData, movieCountry, movieGenres, movieTrailer, movieCompanies } ) => {
 
     return (
         <div>
-            <div className="video" >
+            <div className="video">
                 {movieTrailer &&(
                     <ReactPlayer url={movieTrailer} width={900} height={500}/>
                 )}

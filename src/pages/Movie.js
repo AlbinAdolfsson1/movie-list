@@ -21,8 +21,6 @@ const Movie = () => {
             if (res.data.production_countries[0]) setMovieCountry(res.data.production_countries[0].name)
             setMovieGenres(res.data.genres.map(({name}) => ` ${name}`).join(','))
             setMovieCampany(res.data.production_companies.map(({name}) => ` ${name}`).join(','))
-
-            console.log(res.data)
         })
 
         axios.get(`https://api.themoviedb.org/3/${listType}/${movie}/videos?api_key=1b34b56c896270b1a9bdd7563b01f45d&language=en-US`).then(res => {
