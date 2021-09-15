@@ -33,7 +33,7 @@ const MovieList = ({ listType }) => {
               ))}
           </div>
 
-          {pageNumber != maxpage &&(
+          {pageNumber !== maxpage &&(
             <div className="Movie-pages-bottom">
               <Pagination setPageNumber={setPageNumber} pageNumber={pageNumber} maxPage={maxpage}/>
             </div>

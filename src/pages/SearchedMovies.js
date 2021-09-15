@@ -30,7 +30,7 @@ const SearchedMovies = () => {
                 <MovieInfo key={searchedMovie.id} release_date={searchedMovie.release_date} title={searchedMovie.title} backdrop_path={'https://image.tmdb.org/t/p/w500/' + searchedMovie.backdrop_path} poster_path={'https://image.tmdb.org/t/p/w500/' + searchedMovie.poster_path} vote_average={searchedMovie.vote_average} overview={searchedMovie.overview} id={searchedMovie.id} />
             ))}
 
-            {pageNumber != maxpage &&(
+            {pageNumber !== maxpage &&(
                 <div className="Movie-pages-bottom">
                     <Pagination setPageNumber={setPageNumber} pageNumber={pageNumber} maxPage={maxpage}/>
                 </div>

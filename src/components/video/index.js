@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactPlayer from 'react-player';
 
-const Video = ( { movieData, movieCountry, movieGenres, movieTrailer } ) => {
+const Video = ( { movieData, movieCountry, movieGenres, movieTrailer, movieCompanies } ) => {
 
     return (
         <div>
@@ -20,6 +20,7 @@ const Video = ( { movieData, movieCountry, movieGenres, movieTrailer } ) => {
                     <p className="Details-type">Release: {movieData.release_date}</p>
                     <p className="Details-type">Country: {movieCountry}</p>
                     <p className="Details-type">Genres: {movieGenres}</p>
+                    <p className="Details-type">Companies: {movieCompanies}</p>
                 </div>
 
                 <p className="Details-rating"><img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Star_icon_stylized.svg" className="Details-star"></img>{movieData.vote_average}/10</p>

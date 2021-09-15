@@ -12,21 +12,21 @@ export const MovieInfo = (props) => {
             <li className="Movie-list">
   
             <div className="Movie-background">
+              
+                  <img src={props.poster_path} className="Movie-image" onMouseEnter={() => setDescription(true)} onMouseLeave={() => setDescription(false)} ></img>
   
-                <img src={props.poster_path} className="Movie-image" onMouseEnter={() => setDescription(true)} onMouseLeave={() => setDescription(false)} ></img>
-  
-              {desc &&(
-                <div className="Description-window">
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <h1 className="Movie-title">{props.title} </h1>
-                <p>{props.overview}</p>
-              </div>
-              )}
+                {desc &&(
+                  <div className="Description-window">
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                  <h1 className="Movie-title">{props.title} </h1>
+                  <p>{props.overview}</p>
+                </div>
+                )}
   
             </div>
   
