@@ -13,7 +13,7 @@ html{
   border-radius: 8px;
   border:none;
   float:right;
-  margin-top: -130px;
+  margin-top: -110px;
   margin-right: 40px;
   font-size: 30px;
   text-align: center;
@@ -25,7 +25,7 @@ html{
   border-radius: 3px;
   border: 2px solid #137e9f;
   float:right;
-  margin-top: -75px;
+  margin-top: -55px;
   margin-right: 40px;
   margin-bottom: 50px;
   font-size: 20px;
@@ -132,7 +132,7 @@ a.active{
   box-shadow: 0px 0px 20px #0d0d0d;
   background-color: #d0d0d0;
   width: 280px;
-  height: 405px
+  height: 405px;
 }
 
 .Movie-image:hover{
@@ -150,7 +150,6 @@ a.active{
   border-radius: 15px;
 
   width: 93%;
-  height: 700px;
 
   margin: auto;
   margin-top: 250px;
@@ -166,12 +165,12 @@ a.active{
 }
 
 .Movie-pages {
-  margin-top: -50px;
+  margin-top: -103px;
   float: right;
 }
 
 .List-type {
-  margin-top: -50px;
+  margin-top: -103px;
   float: left;
 }
 
@@ -204,7 +203,7 @@ a.active{
 }
 
 .Type-button {
-  width: 100px;
+  width: 150px;
   height: 50px;
   font-size: 20px;
   background-color: #1590b6;
@@ -257,17 +256,16 @@ a.active{
 .video {
   width: 90%;
   margin:auto;
-  margin-top: -650px;
+  margin-top: -45%;
   position: relative;
 }
 
 .Video-player {
-  background-color:  #e6e6e6;
-  border-radius: 15px;
-
   margin: auto;
 
   text-align: center;
+
+  border: 3px solid #1590b6;
 }
 
 .Title {
@@ -290,6 +288,7 @@ a.active{
   font-size: 18px;
   margin-right: 50px;
   margin-left: 320px;
+  padding-bottom: 520px;
 }
 
 .Details-rating {
@@ -366,30 +365,109 @@ a.active{
   height: 500px;
   width: auto;
   white-space:nowrap;
-  overflow-x:scroll;
+  overflow-x:hidden;
   overflow-y:hidden;
   background-color: #1590b658;
-  margin-top: 100px;
+  margin-top: -50px;
   padding-top:50px;
+  padding-left: 150px;
+  padding-right: 150px;
   margin-bottom: 50px;
   border-bottom: 3px solid #1590b6;
   border-top: 3px solid #1590b6;
 }
 
-.Sidescroll a {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  height: 100%;
-  margin: 0 auto;
-  cursor: pointer;
+.prevScroll, .nextScroll{
+  position:absolute;
+
+  width: 100px;
+  height: 150px;
+  font-size: 20px;
+  background-color: #1590b6;
+  border: 1px solid #127fa0;
+  color: #ffff;
+  display:block;
+  z-index: 1;
+
+  margin-top: 150px;
+
+  font-size: 70px;
+  text-align: center;
+  
+  opacity: 90%;
+}
+
+.prevScroll:hover, .nextScroll:hover  {
+  background-color: #117a9a;
+}
+
+.prevScroll {
+  margin-left: -130px;
+}
+
+.nextScroll {
+  right: 0;
+  margin-top:-300px;
+}
+
+.Scroll-title {
+  padding: 0;
+  margin:0;
+  margin-top: -40px;
   color: white;
-  transition: 0.6s ease;
 }
-.next {
-  margin-left: 5px;
+
+.reviews-background {
+  background-color:  #e6e6e6;
+  border-radius: 15px;
+
+  width: 93%;
+
+  margin: auto;
+  margin-top: 80px;
+
+  text-align: start;
 }
-.prev {
-  margin-right: 5px;
+
+.reviews-background h1 {
+  padding: 30px;
+}
+
+.Review-rating {
+  float: left;
+  margin-left: -60px;
+  margin-top: -30px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.Review-desc {
+  margin-top: -80px;
+  font-size: 13px;
+  line-height: 24px;
+  margin-right: 50px;
+  margin-left: 250px;
+  padding-top:50px;
+  padding-bottom: 50px;
+  text-align: start;
+}
+
+.Review-date {
+  margin-top: -80px;
+  padding:30px;
+}
+
+.Review-avatar {
+  width: 100px;
+  border-radius: 100px;
+  margin-left: 130px;
+  margin-top: -30px;
+  float: left;
+  position:absolute;
+}
+
+.avatar-holder {
+  padding-bottom: 50px;
 }
 
 @keyframes App-logo-spin {

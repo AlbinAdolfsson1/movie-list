@@ -20,14 +20,32 @@ const MovieList = ({ categorieType }) => {
           setMaxPage(res.data.total_pages)
         })
 
-        axios.get(`https://api.themoviedb.org/3/${listType}/popular?api_key=1b34b56c896270b1a9bdd7563b01f45d&language=en-US&page=1`).then(res => {
+        axios.get(`https://api.themoviedb.org/3/trending/${listType}/week?api_key=1b34b56c896270b1a9bdd7563b01f45d&language=en-US&page=1`).then(res => {
           setScrollList(res.data.results)
         })
           
       }, [pageNumber, listType])
 
+      const PrevScroll = () => {
+        document.getElementById("sidescroll").scrollTo(document.getElementById("sidescroll").scrollLeft - 300, 0)
+      }
+
+      const NextScroll = () => {
+        document.getElementById("sidescroll").scrollTo( document.getElementById("sidescroll").scrollLeft + 300, 0)
+      }
+
       return (
         <Layout className="App">
+
+          <div className="Movie-titles">
+            <h1 className="Scroll-title">Trending Now</h1>
+            <div id="sidescroll" className="Sidescroll">
+              <button className="prevScroll" onClick={PrevScroll}>‹</button>
+                {scrollList.map(scrollmovie => (
+                    <MovieInfo key={scrollmovie.id} categorieType={categorieType} listType={listType} release_date={scrollmovie.release_date} title={scrollmovie.title} backdrop_path={'https://image.tmdb.org/t/p/w500/' + scrollmovie.backdrop_path} poster_path={'https://image.tmdb.org/t/p/w500/' + scrollmovie.poster_path} vote_average={scrollmovie.vote_average} overview={scrollmovie.overview} id={scrollmovie.id} />
+                ))}
+                <button className="nextScroll" onClick={NextScroll}>›</button>
+            </div>
 
             <div className="Movie-pages">
               <Pagination key={pageNumber} setPageNumber={setPageNumber} pageNumber={pageNumber} maxPage={maxpage}/>
@@ -39,12 +57,6 @@ const MovieList = ({ categorieType }) => {
             </div>
             )}
 
-          <div className="Movie-titles">
-            <div className="Sidescroll">
-                {scrollList.map(scrollmovie => (
-                    <MovieInfo key={scrollmovie.id} categorieType={categorieType} listType={listType} release_date={scrollmovie.release_date} title={scrollmovie.title} backdrop_path={'https://image.tmdb.org/t/p/w500/' + scrollmovie.backdrop_path} poster_path={'https://image.tmdb.org/t/p/w500/' + scrollmovie.poster_path} vote_average={scrollmovie.vote_average} overview={scrollmovie.overview} id={scrollmovie.id} />
-                ))}
-            </div>
               {movieList.map(movie => (
                 <MovieInfo key={movie.id} categorieType={categorieType} listType={listType} release_date={movie.release_date} title={movie.title} backdrop_path={'https://image.tmdb.org/t/p/w500/' + movie.backdrop_path} poster_path={'https://image.tmdb.org/t/p/w500/' + movie.poster_path} vote_average={movie.vote_average} overview={movie.overview} id={movie.id} />
               ))}
