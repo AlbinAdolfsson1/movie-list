@@ -15,7 +15,8 @@ const ListType = ({ setListType, listType, setPageNumber }) => {
             setTypeName('Movies')
         }
 
-        setPageNumber(1)
+        if (setPageNumber)
+            setPageNumber(1)
 
     }
 
