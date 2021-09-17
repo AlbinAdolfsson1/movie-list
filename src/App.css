@@ -3,6 +3,20 @@ html{
   background-color: #202227;
 }
 
+footer{
+  background-color: #282c34;
+  min-height: 15vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  box-shadow: 0px 0px 20px #0d0d0d;
+  border-top: 3px solid #1590b6;
+
+  margin-top: 100px;
+}
+
 .Layout {
   text-align: center;
 }
@@ -75,7 +89,6 @@ html{
   border-bottom: 3px solid #1590b6;
 
   margin-bottom: 50px;
-
 }
 
 .Categorie-list {
@@ -152,7 +165,7 @@ a.active{
   width: 93%;
 
   margin: auto;
-  margin-top: 250px;
+  margin-top: 20%;
 
   text-align: center;
 }
@@ -380,34 +393,30 @@ a.active{
 .prevScroll, .nextScroll{
   position:absolute;
 
-  width: 100px;
-  height: 150px;
-  font-size: 20px;
-  background-color: #1590b6;
-  border: 1px solid #127fa0;
+  background-color: #1590b600;
+  border: none;
   color: #ffff;
   display:block;
   z-index: 1;
 
-  margin-top: 150px;
-
-  font-size: 70px;
+  font-size: 200px;
   text-align: center;
   
-  opacity: 90%;
+  opacity: 65%;
 }
 
 .prevScroll:hover, .nextScroll:hover  {
-  background-color: #117a9a;
+  opacity: 90%;
 }
 
 .prevScroll {
-  margin-left: -130px;
+  margin-left: -110px;
+  margin-top: 75px;
 }
 
 .nextScroll {
   right: 0;
-  margin-top:-300px;
+  margin-top:-375px;
 }
 
 .Scroll-title {
