@@ -12,7 +12,6 @@ const Movie = () => {
     const [movieData, setMovieData] = useState([])
     const [movieList, setMovieList] = useState([])
     const [reviews, setReviews] = useState([])
-    const [reviewAvatar, setReviewAvatar] = useState('')
     const [movieCompanies, setMovieCampany] = useState('')
     const [movieCountry, setMovieCountry] = useState('')
     const [movieGenres, setMovieGenres] = useState('')
@@ -26,8 +25,6 @@ const Movie = () => {
             setMovieGenres(res.data.genres.map(({name}) => ` ${name}`).join(','))
             setMovieCampany(res.data.production_companies.map(({name}) => ` ${name}`).join(','))
             setMovieStream(res.data.homepage)
-
-            console.log(res.data)
         })
 
         axios.get(`https://api.themoviedb.org/3/${listType}/${movie}/videos?api_key=1b34b56c896270b1a9bdd7563b01f45d&language=en-US`).then(res => {
@@ -40,7 +37,6 @@ const Movie = () => {
 
         axios.get(`https://api.themoviedb.org/3/${listType}/${movie}/reviews?api_key=1b34b56c896270b1a9bdd7563b01f45d&language=en-US`).then(res => {
             setReviews(res.data.results)
-            console.log(res.data.results)
         })
 
         window.scrollTo(0, 0)
@@ -57,7 +53,7 @@ const Movie = () => {
                 ))}
 
                 {reviews.map(review => (
-                    <Reviews author={review.author} author_path={review.author_details.avatar_path} rating={review.author_details.rating} content={review.content} posted={review.created_at}/>
+                    <Reviews key={review.id} id={review.id} author={review.author} author_path={review.author_details.avatar_path} rating={review.author_details.rating} content={review.content} posted={review.created_at}/>
                 ))}
 
             </div>
