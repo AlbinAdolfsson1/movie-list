@@ -17,8 +17,6 @@ const SearchedMovies = () => {
         axios.get(`https://api.themoviedb.org/3/search/${listType}?api_key=1b34b56c896270b1a9bdd7563b01f45d&language=en-US&query=${search}&page=${pageNumber}&include_adult=false`).then(res => {
             setSearchList(res.data.results)
             setMaxPage(res.data.total_pages)
-
-            console.log(res.data)
         })
     }, [search, pageNumber, listType] )
     return (

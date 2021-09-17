@@ -12,7 +12,7 @@ const IndexPage = () => {
 
   useEffect(() => {
 
-    axios.get(`https://api.themoviedb.org/3/trending/movie/week?api_key=1b34b56c896270b1a9bdd7563b01f45d&language=en-US`).then(res => {
+    axios.get(`https://api.themoviedb.org/3/trending/movie/day?api_key=1b34b56c896270b1a9bdd7563b01f45d&language=en-US`).then(res => {
       setMovieList(res.data.results)
     })
   }, [])

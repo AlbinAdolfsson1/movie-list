@@ -20,7 +20,7 @@ const MovieList = ({ categorieType }) => {
           setMaxPage(res.data.total_pages)
         })
 
-        axios.get(`https://api.themoviedb.org/3/trending/${listType}/week?api_key=1b34b56c896270b1a9bdd7563b01f45d&language=en-US&page=1`).then(res => {
+        axios.get(`https://api.themoviedb.org/3/trending/${listType}/day?api_key=1b34b56c896270b1a9bdd7563b01f45d&language=en-US&page=1`).then(res => {
           setScrollList(res.data.results)
         })
           
